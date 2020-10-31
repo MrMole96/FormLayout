@@ -1,0 +1,241 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+%wrapper-label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10.9564px;
+  line-height: 28px;
+  display: block;
+  color: #333333;
+  padding-left: 12px;
+}
+
+%wrapper-input {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #dadaed;
+  background: transparent;
+  outline: none;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  &:focus {
+    border-bottom: 2px solid #652ae6;
+  }
+}
+%wrapper-error {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10.9564px;
+  line-height: 11px;
+  color: #eb5757;
+  padding-left: 12px;
+}
+
+@mixin data-wrapper-select {
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.0001);
+  mix-blend-mode: normal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-repeat: no-repeat;
+  background-position-x: 90%;
+  background-position-y: 20px;
+  background-image: url("../../assets/dropdown_arrow.svg");
+  /* Gray */
+  border: 2px solid #dadaed;
+}
+
+.input-wrapper {
+  margin: 0 auto;
+  max-width: 370px;
+
+  &__label {
+    @extend %wrapper-label;
+  }
+  &__input {
+    @extend %wrapper-input;
+  }
+  &__error {
+    @extend %wrapper-error;
+  }
+}
+.number-wrapper {
+  margin: 0 auto;
+  max-width: 370px;
+
+  &__label {
+    @extend %wrapper-label;
+  }
+
+  &__error {
+    @extend %wrapper-error;
+  }
+
+  &__prefix {
+    width: 120px;
+    margin-right: 19px;
+    flex-grow: 1;
+    & > select {
+      @extend %wrapper-input;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+      background-repeat: no-repeat;
+      background-position-x: 90%;
+      background-position-y: 5px;
+      background-image: url("../../assets/dropdown_arrow.svg");
+    }
+  }
+  &__input {
+    width: auto;
+    flex-grow: 1;
+    & > input {
+      @extend %wrapper-input;
+    }
+  }
+}
+
+.checkbox-wrapper {
+  margin: 0 auto 40px auto;
+  max-width: 370px;
+
+  &__label {
+    @extend %wrapper-label;
+  }
+
+  &__error {
+    @extend %wrapper-error;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+  }
+
+  &__container {
+    display: flex;
+    margin-top: 12px;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  &__box {
+    display: block;
+    width: 66px;
+    position: relative;
+    & > label {
+      position: relative;
+    }
+    & > label::before {
+      position: absolute;
+      display: block;
+      left: -10px;
+      top: -15px;
+      width: 50px;
+      height: 50px;
+      content: "";
+      background: rgba(255, 255, 255, 0.0001);
+      border: 2px solid #dadaed;
+      box-sizing: border-box;
+    }
+    & > label.checkbox-wrapper__box--active::before{
+      border: 2px solid #1bfec0;
+    }
+    &__input {
+      position: absolute;
+      left: 30px;
+      top: 3px;
+
+      &::after {
+        position: absolute;
+        content: "";
+        width: 15px;
+        height: 15px;
+        background: #f2f2f5;
+        border: 2px solid #dadaed;
+      }
+      &:checked::after {
+        position: absolute;
+        content: "";        
+        width: 15px;
+        height: 15px;
+        background: #f8f8f9;
+        border: 2px solid #1bfec0;
+      }
+
+      &:checked::before{
+        position: absolute;
+        content: "";
+        background-color: #1bfec0;
+        width: 3px;
+        top: 8px;
+        left: 8px;
+        height: 3px;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.date-wrapper {
+  margin: 0 auto;
+  max-width: 370px;
+  &__label {
+    @extend %wrapper-label;
+  }
+
+  &__error {
+    @extend %wrapper-error;
+  }
+
+  &__separator {
+    display: inline-table;
+    width: 11px;
+    margin: 0 6px;
+    height: 2px;
+    background: #a2a2af;
+    mix-blend-mode: normal;
+    opacity: 0.25;
+  }
+  &__input:nth-child(1) {
+    width: 50px;
+  }
+  &__input:not(:nth-child(1)) {
+    width: 100%;
+  }
+  &__input {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.0001);
+    mix-blend-mode: normal;
+    border: 2px solid #dadaed;
+  }
+
+  &__select {
+    @include data-wrapper-select();
+    &--mobile {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .date-wrapper {
+    &__select {
+      display: none;
+      &--mobile {
+        @include data-wrapper-select();
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}

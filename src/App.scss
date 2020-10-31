@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+
+$breakpoint-tablet: 991px;
+$desktop-width: 1024px;
+
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  background: #242424;
+  min-height: 100%;
+}
+
+.img__gradient {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.d-block {
+  display: block;
+}
+.d-flex {
+  display: flex;
+}
+.center-vertical{
+  align-items: center;
+}

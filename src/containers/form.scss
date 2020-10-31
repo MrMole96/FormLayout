@@ -1,0 +1,208 @@
+$breakpoint-tablet: 991px;
+
+.form__heading {
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48.0463px;
+  line-height: 48px;
+  /* identical to box height, or 100% */
+
+  //   display: flex;
+  //   align-items: flex-end;
+
+  color: #ffffff;
+}
+
+.form__container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 556px;
+  max-width: 728px;
+  margin: 0 auto;
+}
+
+.form__container__left_box {
+  width: 256px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: #202020;
+}
+.form__container__left_box__layer {
+  height: 100%;
+  background-image: url("../assets/Layer\ 1\ 1.svg");
+}
+.form__container__left_box__lines {
+  position: absolute;
+  top: 98px;
+  bottom: 80px;
+  right: 0;
+  width: 244px;
+  height: 374px;
+  background-repeat: no-repeat;
+  background-image: url("../assets/LINES\ 2.svg");
+}
+.form__container__box {
+  padding: 42px 50px 78px 50px;
+  position: absolute;
+  right: 0;
+  width: 472px;
+  height: 556px;
+  background: linear-gradient(
+      5.88deg,
+      rgba(165, 165, 180, 0.15) 4.19%,
+      rgba(228, 235, 239, 0.15) 95.81%,
+      rgba(231, 232, 238, 0.15) 95.81%,
+      rgba(231, 232, 238, 0.15) 95.81%
+    ),
+    #fcfcfd;
+}
+
+.form__container__box > .form__container__box__description {
+  display: flex;
+  margin:0;
+  margin-bottom: 60px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13.9904px;
+  line-height: 24px;
+  /* or 171% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.279779px;
+
+  color: #202020;
+}
+
+.form__container__box__list {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 11px;
+  /* identical to box height, or 100% */
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  letter-spacing: 0.22px;
+
+  color: #ffffff;
+  position: absolute;
+  list-style-type: none;
+  right: -54px;
+  top: 80px;
+}
+.form__container__box__list__step,
+.form__container__box__list__step--active {
+  position: relative;
+  margin: 37px 0;
+
+  & > span {
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
+}
+
+%before-step {
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  content: "";
+  height: 2px;
+  width: 25px;
+  background: #f9f9fb;
+  mix-blend-mode: normal;
+  opacity: 0.25;
+}
+
+.form__container__box__list__step {
+  & > span::before,
+  p::before {
+    @extend %before-step;
+  }
+
+  &--active > span::before,
+  p::before {
+    @extend %before-step;
+    opacity: 1;
+    background: #1bfec0;
+  }
+}
+
+.form__container__box__inputs {
+  display: block;
+  margin: 0 auto;
+}
+
+.form__container__btn-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 530px;
+  right: -50px;
+  padding: 0;
+    border: 0;
+
+  &__text {
+    flex-grow: 1;
+    font-size: 12.0061px;
+    line-height: 28px;
+    letter-spacing: 0.480054px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 12px 52px;
+    color: #ffffff;
+    background: linear-gradient(90deg, #8658eb -0.42%, #652ae6 100.42%);
+    box-shadow: 0px 20px 25px rgba(32, 31, 54, 0.15);
+    border:0;
+  }
+
+  &__arrow {
+    height: 52px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7841f4;
+    box-shadow: 0px 23px 24px rgba(13, 13, 31, 0.08);
+    border:0;
+  }
+}
+
+@media (max-width: 991px) {
+  .form__container__box >.form__container__box__description{
+   margin: 0 auto 30px auto;
+    max-width: 370px;
+  }
+  .form__container__box {
+    height: 515px;
+    position: relative;
+    margin: 0 10px;
+    padding: 15px 15px 78px 15px;
+  }
+  .form__container__btn-container {
+    justify-content: flex-start;
+    top: 490px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    right: auto;
+    &__text{
+      flex-grow: 1;
+    }
+  }
+
+  .form__container__left_box {
+    display: none;
+  }
+  .form__container__box__list{
+    display: none;
+  }
+}
