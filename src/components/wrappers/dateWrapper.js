@@ -60,14 +60,14 @@ export const DateWrapper = (props) => {
           placeholder="01"
         />
         <div className="date-wrapper__separator"></div>
-        <select className="date-wrapper__select--mobile" {...monthField}>
-          <option></option>
+        <select className="date-wrapper__select--mobile" {...monthField} placeholder="sss">
+        <option value="" disabled>01</option>
           {populateMonth().map((x, index) => (
             <option key={index}>{x}</option>
           ))}
         </select>
         <select className="date-wrapper__select" {...monthField}>
-          <option></option>
+        <option value="" disabled>Month</option>
           {months.map((x, index) => (
             <option key={index}>{x}</option>
           ))}
@@ -76,9 +76,8 @@ export const DateWrapper = (props) => {
         <select
           className="date-wrapper__input"
           {...yearField}
-          placeholder="1990"
         >
-          <option></option>
+           <option value="" disabled>Year</option>
           {populateYears().map((x, index) => (
             <option key={index}>{x}</option>
           ))}
